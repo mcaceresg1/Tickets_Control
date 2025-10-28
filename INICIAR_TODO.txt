@@ -1,0 +1,75 @@
+═══════════════════════════════════════════════════════════════
+  INSTRUCCIONES PARA INICIAR API Y FRONTEND
+═══════════════════════════════════════════════════════════════
+
+PROBLEMA:
+- La API se inicia SOLO cuando alguien la visita por primera vez
+- Chrome bloquea CORS si la API no está corriendo
+
+SOLUCIÓN: Iniciar la API primero, luego el frontend
+
+═══════════════════════════════════════════════════════════════
+PASO 1: ABRIR LA API PRIMERO
+═══════════════════════════════════════════════════════════════
+
+1. Abre tu navegador (Chrome o Edge)
+
+2. Ve a: https://apitp.nexwork-peru.com:3000/api
+
+3. ACEPTA EL CERTIFICADO:
+   - Click en "Avanzado" o "Advanced"
+   - Click en "Continuar a apitp.nexwork-peru.com"
+
+4. Deberías ver un JSON que dice:
+   {
+     "name": "Sistema de Tickets API",
+     "version": "2.0.0",
+     "status": "online",
+     ...
+   }
+
+5. MANTÉN ESTA PESTAÑA ABIERTA
+
+═══════════════════════════════════════════════════════════════
+PASO 2: ABRIR EL FRONTEND
+═══════════════════════════════════════════════════════════════
+
+6. Abre una NUEVA PESTAÑA
+
+7. Ve a: https://tp.nexwork-peru.com:4200/
+
+8. ACEPTA EL CERTIFICADO (si te lo pide)
+
+9. Deberías ver tu aplicación de login
+
+═══════════════════════════════════════════════════════════════
+PASO 3: HACER LOGIN
+═══════════════════════════════════════════════════════════════
+
+10. Ingresa tus credenciales
+
+11. Click en "Login"
+
+12. Debería funcionar correctamente
+
+═══════════════════════════════════════════════════════════════
+SI SIGUE CON ERROR DE CORS:
+═══════════════════════════════════════════════════════════════
+
+A) Presiona F12 para abrir DevTools
+B) Ve a la pestaña "Network" o "Red"
+C) Marca "Disable cache" o "Deshabilitar caché"
+D) Presiona Ctrl+Shift+R para recargar sin caché
+E) Intenta hacer login de nuevo
+
+═══════════════════════════════════════════════════════════════
+URLS FINALES:
+═══════════════════════════════════════════════════════════════
+
+API:      https://apitp.nexwork-peru.com:3000/api
+Frontend: https://tp.nexwork-peru.com:4200/
+Health:   https://apitp.nexwork-peru.com:3000/health
+Swagger:  https://apitp.nexwork-peru.com:3000/api-docs
+
+═══════════════════════════════════════════════════════════════
+

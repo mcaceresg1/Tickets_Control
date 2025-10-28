@@ -1,0 +1,117 @@
+═══════════════════════════════════════════════════════════════════════
+  INSTRUCCIONES PARA CONFIGURAR SSL EN IIS MANAGER
+═══════════════════════════════════════════════════════════════════════
+
+PASO 1: ABRIR IIS MANAGER
+──────────────────────────
+Ya lo tienes abierto. Si no, presiona Win+R y escribe: inetmgr
+
+
+PASO 2: NAVEGAR A TUS SITIOS
+─────────────────────────────
+En el PANEL IZQUIERDO, expande:
+
+    [▼] Tu-Servidor
+        [▼] Sites
+            [▼] SisTickets-API   ← Haz click AQUÍ
+            [▼] SisTickets-Web   ← Y luego AQUÍ
+
+
+PASO 3: CONFIGURAR SisTickets-API
+──────────────────────────────────
+
+1. Click en "SisTickets-API" (se pondrá resaltado en azul)
+
+2. En el PANEL DERECHO, busca la sección "Actions" o "Acciones"
+
+3. Verás algo como esto:
+   ┌─────────────────────────────┐
+   │ Manage Website              │
+   │   ├─ Browse *:3000 (http)  │
+   │   ├─ Bindings...        ←── │ CLICK AQUÍ
+   │   ├─ Basic Settings...      │
+   │   └─ Advanced Settings...   │
+   └─────────────────────────────┘
+
+   O CLICK DERECHO en "SisTickets-API" → "Bindings..."
+
+4. Se abre ventana "Site Bindings"
+
+5. Click botón "Add..."
+
+6. Llena el formulario:
+   ┌────────────────────────────────────────┐
+   │ Type:           [https ▼]              │
+   │ IP address:     All Unassigned         │
+   │ Port:           3000                   │
+   │ Host name:      apitp.nexwork-peru.com│
+   │                                         │
+   │ SSL certificate:                        │
+   │ [*.tp.nexwork-peru.com ▼]             │
+   │                                         │
+   │ ☑ Require Server Name Indication       │
+   └────────────────────────────────────────┘
+
+7. Click "OK"
+
+
+PASO 4: CONFIGURAR SisTickets-Web
+──────────────────────────────────
+
+1. Click en "SisTickets-Web" en el panel izquierdo
+
+2. Click en "Bindings..." en el panel derecho (o click derecho)
+
+3. Click "Add..."
+
+4. Llena el formulario:
+   ┌────────────────────────────────────────┐
+   │ Type:           [https ▼]              │
+   │ IP address:     All Unassigned         │
+   │ Port:           4200                   │
+   │ Host name:      tp.nexwork-peru.com   │
+   │                                         │
+   │ SSL certificate:                        │
+   │ [*.tp.nexwork-peru.com ▼]             │
+   │                                         │
+   │ ☑ Require Server Name Indication       │
+   └────────────────────────────────────────┘
+
+5. Click "OK"
+
+
+PASO 5: VERIFICAR
+─────────────────
+
+Después de configurar ambos, deberías poder acceder:
+
+✓ API con HTTPS:      https://apitp.nexwork-peru.com:3000/api
+✓ Frontend con HTTPS: https://tp.nexwork-peru.com:4200/
+
+O con HTTP (también funciona):
+
+✓ API con HTTP:       http://apitp.nexwork-peru.com:3000/api
+✓ Frontend con HTTP:  http://tp.nexwork-peru.com:4200/
+
+
+PROBLEMAS COMUNES
+─────────────────
+
+❌ No veo "Bindings..." en el panel derecho
+   → Asegúrate de hacer click EN EL SITIO (SisTickets-API o SisTickets-Web)
+   → NO hagas click en "Application Pools"
+   → Verifica que IIS Manager no esté en "Content View"
+
+❌ El certificado no aparece en la lista
+   → Usa el certificado: *.tp.nexwork-peru.com (wildcard)
+   → Este certificado funciona para ambos dominios
+
+❌ Error "Require Server Name Indication"
+   → DEBES marcar esta casilla para que funcione correctamente
+
+═══════════════════════════════════════════════════════════════════════
+
+¿NECESITAS AYUDA ADICIONAL?
+
+Toma una captura de pantalla de tu IIS Manager y me la puedes describir.
+
