@@ -4,11 +4,11 @@ echo   ABRIENDO API Y FRONTEND EN EDGE
 echo ========================================
 echo.
 echo Paso 1: Abriendo API...
-start msedge https://apitp.nexwork-peru.com:3000/api
+start msedge https://apitk.nexwork-peru.com:3000/api
 timeout /t 3 /nobreak
 echo.
 echo Paso 2: Abriendo Frontend...
-start msedge https://tp.nexwork-peru.com:4200/
+start msedge https://tk.nexwork-peru.com:4200/
 echo.
 echo ========================================
 echo   INSTRUCCIONES

@@ -4,7 +4,7 @@ echo   PASO 2: ABRIENDO FRONTEND
 echo ========================================
 echo.
 echo Abriendo Frontend...
-start https://tp.nexwork-peru.com:4200/
+start https://tk.nexwork-peru.com:8090/
 echo.
 echo ========================================
 echo   LISTO

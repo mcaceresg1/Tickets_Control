@@ -65,7 +65,7 @@ iisreset
 Abre **PowerShell** (como usuario normal, NO como administrador):
 
 ```powershell
-cd C:\WS_Tickets_ver\Sis.Tickets-Api
+cd C:\WS_Tickets_Control\Sis.Tickets-Api
 npm install
 ```
 
@@ -91,7 +91,7 @@ dir dist
 
 ### 2.3 Crear archivo .env
 
-Crea el archivo `.env` en la raíz del proyecto `C:\WS_Tickets_ver\Sis.Tickets-Api\.env`
+Crea el archivo `.env` en la raíz del proyecto `C:\WS_Tickets_Control\Sis.Tickets-Api\.env`
 
 Puedes usar el Bloc de notas:
 
@@ -116,14 +116,14 @@ DB_ENCRYPT=false
 DB_TRUST_CERT=true
 
 # CORS
-CORS_ORIGIN=https://tp.nexwork-peru.com:4200
+CORS_ORIGIN=https://tk.nexwork-peru.com:4200
 
 # JWT - IMPORTANTE: Cambia este secret por uno seguro
 JWT_SECRET=tu-clave-super-secreta-cambiar-en-produccion-123456
 JWT_EXPIRES_IN=24h
 
 # Frontend URL
-FRONTEND_URL=https://tp.nexwork-peru.com:4200
+FRONTEND_URL=https://tk.nexwork-peru.com:4200
 ```
 
 **⚠️ IMPORTANTE:** 
@@ -181,7 +181,7 @@ dir web.config
    ```
    Site name: SisTickets-API
    Application pool: SisTickets-API-Pool
-   Physical path: C:\WS_Tickets_ver\Sis.Tickets-Api\dist
+   Physical path: C:\WS_Tickets_Control\Sis.Tickets-Api\dist
    ```
 
 4. En la sección **Binding:**
@@ -189,7 +189,7 @@ dir web.config
    Type: http (por ahora, cambiaremos a https después)
    IP address: All Unassigned
    Port: 3000
-   Host name: apitp.nexwork-peru.com
+   Host name: apitk.nexwork-peru.com
    ```
 
 5. Click **OK**
@@ -204,7 +204,7 @@ dir web.config
 
 ```powershell
 # Navegar a la carpeta dist
-cd C:\WS_Tickets_ver\Sis.Tickets-Api\dist
+cd C:\WS_Tickets_Control\Sis.Tickets-Api\dist
 
 # Otorgar permisos a IIS_IUSRS
 icacls . /grant "IIS_IUSRS:(OI)(CI)RX" /T
@@ -227,8 +227,8 @@ icacls . /grant "IUSR:(OI)(CI)RX" /T
    Type: https
    IP address: All Unassigned
    Port: 3000
-   Host name: apitp.nexwork-peru.com
-   SSL certificate: [Selecciona tu certificado SSL para apitp.nexwork-peru.com]
+   Host name: apitk.nexwork-peru.com
+   SSL certificate: [Selecciona tu certificado SSL para apitk.nexwork-peru.com]
    ```
 5. Click **OK**
 6. **OPCIONAL:** Si solo quieres HTTPS, puedes eliminar el binding HTTP
@@ -262,13 +262,13 @@ icacls . /grant "IUSR:(OI)(CI)RX" /T
 Abre tu navegador y visita:
 
 ```
-https://apitp.nexwork-peru.com:3000/api
+https://apitk.nexwork-peru.com:3000/api
 ```
 
 O prueba el health check:
 
 ```
-https://apitp.nexwork-peru.com:3000/health
+https://apitk.nexwork-peru.com:3000/health
 ```
 
 ✔️ **Debería responder con JSON** (aunque sea un error 404, eso significa que el servidor está respondiendo)
@@ -280,7 +280,7 @@ https://apitp.nexwork-peru.com:3000/health
 Si tienes un endpoint de login:
 
 ```
-https://apitp.nexwork-peru.com:3000/api/auth/login
+https://apitk.nexwork-peru.com:3000/api/auth/login
 ```
 
 ---
@@ -292,7 +292,7 @@ https://apitp.nexwork-peru.com:3000/api/auth/login
 Los logs de Node.js se guardan en:
 
 ```
-C:\WS_Tickets_ver\Sis.Tickets-Api\dist\iisnode\
+C:\WS_Tickets_Control\Sis.Tickets-Api\dist\iisnode\
 ```
 
 Abre los archivos de log para ver errores.
@@ -352,7 +352,7 @@ C:\inetpub\logs\LogFiles\
 **Solución:**
 ```powershell
 # Como Administrador
-cd C:\WS_Tickets_ver\Sis.Tickets-Api\dist
+cd C:\WS_Tickets_Control\Sis.Tickets-Api\dist
 icacls . /grant "IIS_IUSRS:(OI)(CI)F" /T
 icacls . /grant "IUSR:(OI)(CI)F" /T
 ```
@@ -375,7 +375,7 @@ icacls . /grant "IUSR:(OI)(CI)F" /T
 
 Si todo está bien, deberías poder:
 
-- ✅ Acceder a `https://apitp.nexwork-peru.com:3000/api`
+- ✅ Acceder a `https://apitk.nexwork-peru.com:3000/api`
 - ✅ Ver el sitio corriendo en IIS Manager
 - ✅ Ver logs en la carpeta `iisnode`
 - ✅ Hacer peticiones POST/GET a tus endpoints
@@ -395,7 +395,7 @@ Restart-WebItem -PSPath "IIS:\Sites\SisTickets-API"
 ### Ver logs en tiempo real
 ```powershell
 # PowerShell
-Get-Content C:\WS_Tickets_ver\Sis.Tickets-Api\dist\iisnode\*.log -Wait
+Get-Content C:\WS_Tickets_Control\Sis.Tickets-Api\dist\iisnode\*.log -Wait
 ```
 
 ### Detener el sitio
@@ -412,7 +412,7 @@ Cuando hagas cambios en el código:
 
 ```powershell
 # 1. Compilar
-cd C:\WS_Tickets_ver\Sis.Tickets-Api
+cd C:\WS_Tickets_Control\Sis.Tickets-Api
 npm run build
 
 # 2. Reiniciar en IIS

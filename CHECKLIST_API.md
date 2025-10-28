@@ -16,7 +16,7 @@ Imprime esta lista y marca cada paso conforme lo completes.
 
 ## PREPARACIÓN DEL PROYECTO
 
-- [ ] Navegar a: `C:\WS_Tickets_ver\Sis.Tickets-Api`
+- [ ] Navegar a: `C:\WS_Tickets_Control\Sis.Tickets-Api`
 - [ ] Ejecutar: `npm install`
 - [ ] Ejecutar: `npm run build`
 - [ ] Verificar que la carpeta `dist` fue creada
@@ -39,9 +39,9 @@ Imprime esta lista y marca cada paso conforme lo completes.
 ### Sitio Web
 - [ ] Crear nuevo sitio: `SisTickets-API`
 - [ ] Application pool: `SisTickets-API-Pool`
-- [ ] Physical path: `C:\WS_Tickets_ver\Sis.Tickets-Api\dist`
+- [ ] Physical path: `C:\WS_Tickets_Control\Sis.Tickets-Api\dist`
 - [ ] Binding HTTP - Puerto: `3000`
-- [ ] Host name: `apitp.nexwork-peru.com`
+- [ ] Host name: `apitk.nexwork-peru.com`
 
 ### SSL/HTTPS
 - [ ] Agregar binding HTTPS
@@ -66,8 +66,8 @@ Imprime esta lista y marca cada paso conforme lo completes.
 ## PRUEBAS
 
 - [ ] Abrir navegador
-- [ ] Visitar: `https://apitp.nexwork-peru.com:3000/api`
-- [ ] Probar health check: `https://apitp.nexwork-peru.com:3000/health`
+- [ ] Visitar: `https://apitk.nexwork-peru.com:3000/api`
+- [ ] Probar health check: `https://apitk.nexwork-peru.com:3000/health`
 - [ ] Verificar que responde (aunque sea con error, debe responder)
 - [ ] Probar un endpoint de login o similar
 - [ ] Verificar que puede conectarse a la base de datos
@@ -76,7 +76,7 @@ Imprime esta lista y marca cada paso conforme lo completes.
 
 ## LOGS Y MONITOREO
 
-- [ ] Revisar logs en: `C:\WS_Tickets_ver\Sis.Tickets-Api\dist\iisnode\`
+- [ ] Revisar logs en: `C:\WS_Tickets_Control\Sis.Tickets-Api\dist\iisnode\`
 - [ ] Verificar que no hay errores críticos
 - [ ] Verificar conexión a base de datos en logs
 

@@ -14,11 +14,11 @@ PASO 1: ABRIR LA API PRIMERO
 
 1. Abre tu navegador (Chrome o Edge)
 
-2. Ve a: https://apitp.nexwork-peru.com:3000/api
+2. Ve a: https://apitk.nexwork-peru.com:3000/api
 
 3. ACEPTA EL CERTIFICADO:
    - Click en "Avanzado" o "Advanced"
-   - Click en "Continuar a apitp.nexwork-peru.com"
+   - Click en "Continuar a apitk.nexwork-peru.com"
 
 4. Deberías ver un JSON que dice:
    {
@@ -36,7 +36,7 @@ PASO 2: ABRIR EL FRONTEND
 
 6. Abre una NUEVA PESTAÑA
 
-7. Ve a: https://tp.nexwork-peru.com:4200/
+7. Ve a: https://tk.nexwork-peru.com:4200/
 
 8. ACEPTA EL CERTIFICADO (si te lo pide)
 
@@ -66,10 +66,10 @@ E) Intenta hacer login de nuevo
 URLS FINALES:
 ═══════════════════════════════════════════════════════════════
 
-API:      https://apitp.nexwork-peru.com:3000/api
-Frontend: https://tp.nexwork-peru.com:4200/
-Health:   https://apitp.nexwork-peru.com:3000/health
-Swagger:  https://apitp.nexwork-peru.com:3000/api-docs
+API:      https://apitk.nexwork-peru.com:3000/api
+Frontend: https://tk.nexwork-peru.com:4200/
+Health:   https://apitk.nexwork-peru.com:3000/health
+Swagger:  https://apitk.nexwork-peru.com:3000/api-docs
 
 ═══════════════════════════════════════════════════════════════
 

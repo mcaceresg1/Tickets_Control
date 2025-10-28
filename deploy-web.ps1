@@ -17,11 +17,11 @@ if (-not $isAdmin) {
 }
 
 # Variables
-$projectPath = "C:\WS_Tickets_ver\Sis.Tickets-Web"
+$projectPath = "C:\WS_Tickets_Control\Sis.Tickets-Web"
 $siteName = "SisTickets-Web"
 $appPoolName = "SisTickets-Web-Pool"
 $port = 4200
-$hostName = "tp.nexwork-peru.com"
+$hostName = "tk.nexwork-peru.com"
 
 # Paso 1: Compilar el proyecto
 Write-Host "[1/6] Compilando proyecto Angular..." -ForegroundColor Yellow
@@ -86,6 +86,15 @@ if (Test-Path "IIS:\AppPools\$appPoolName") {
 # Configurar Application Pool
 Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "managedRuntimeVersion" -Value ""
 Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "managedPipelineMode" -Value "Integrated"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "processModel.identityType" -Value "ApplicationPoolIdentity"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "processModel.loadUserProfile" -Value $false
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "processModel.idleTimeout" -Value "00:20:00"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.time" -Value "00:00:00"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.memory" -Value 0
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.requests" -Value 0
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.schedule" -Value @()
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.disallowOverlappingRotation" -Value $true
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.disallowRotationOnConfigChange" -Value $false
 
 Write-Host "  ✓ Application Pool configurado" -ForegroundColor Green
 Write-Host ""
@@ -138,7 +147,7 @@ Write-Host ""
 Write-Host "NOTA IMPORTANTE:" -ForegroundColor Yellow
 Write-Host "- Para usar HTTPS, configure manualmente el certificado SSL en IIS" -ForegroundColor Yellow
 Write-Host "- Verifique que el módulo URL Rewrite esté instalado" -ForegroundColor Yellow
-Write-Host "- La API debe estar en: https://apitp.nexwork-peru.com/api" -ForegroundColor Yellow
+Write-Host "- La API debe estar en: https://apitk.nexwork-peru.com/api" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Presione cualquier tecla para salir..." -ForegroundColor Gray
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

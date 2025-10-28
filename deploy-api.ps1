@@ -17,11 +17,11 @@ if (-not $isAdmin) {
 }
 
 # Variables
-$projectPath = "C:\WS_Tickets_ver\Sis.Tickets-Api"
+$projectPath = "C:\WS_Tickets_Control\Sis.Tickets-Api"
 $siteName = "SisTickets-API"
 $appPoolName = "SisTickets-API-Pool"
 $port = 3000
-$hostName = "apitp.nexwork-peru.com"
+$hostName = "apitk.nexwork-peru.com"
 
 # Paso 1: Compilar el proyecto
 Write-Host "[1/6] Compilando proyecto TypeScript..." -ForegroundColor Yellow
@@ -71,6 +71,15 @@ if (Test-Path "IIS:\AppPools\$appPoolName") {
 # Configurar Application Pool
 Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "managedRuntimeVersion" -Value ""
 Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "managedPipelineMode" -Value "Integrated"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "processModel.identityType" -Value "ApplicationPoolIdentity"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "processModel.loadUserProfile" -Value $false
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "processModel.idleTimeout" -Value "00:20:00"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.time" -Value "00:00:00"
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.memory" -Value 0
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.requests" -Value 0
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.periodicRestart.schedule" -Value @()
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.disallowOverlappingRotation" -Value $true
+Set-ItemProperty "IIS:\AppPools\$appPoolName" -Name "recycling.disallowRotationOnConfigChange" -Value $false
 
 Write-Host "  ✓ Application Pool configurado" -ForegroundColor Green
 Write-Host ""

@@ -4,7 +4,7 @@ echo   PASO 1: INICIANDO API
 echo ========================================
 echo.
 echo Abriendo API en el navegador...
-start https://apitp.nexwork-peru.com:3000/api
+start https://apitk.nexwork-peru.com:3000/api
 echo.
 echo ========================================
 echo   IMPORTANTE

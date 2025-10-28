@@ -9,7 +9,7 @@ echo API reiniciada. Esperando 5 segundos...
 timeout /t 5 /nobreak
 echo.
 echo Abriendo API para probar...
-start https://apitp.nexwork-peru.com:3000/api
+start https://apitk.nexwork-peru.com:3000/api
 echo.
 echo ========================================
 echo   LISTO

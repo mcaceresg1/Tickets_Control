@@ -44,10 +44,10 @@ PASO 3: CONFIGURAR SisTickets-API
    │ Type:           [https ▼]              │
    │ IP address:     All Unassigned         │
    │ Port:           3000                   │
-   │ Host name:      apitp.nexwork-peru.com│
+   │ Host name:      apitk.nexwork-peru.com│
    │                                         │
    │ SSL certificate:                        │
-   │ [*.tp.nexwork-peru.com ▼]             │
+   │ [*.tk.nexwork-peru.com ▼]             │
    │                                         │
    │ ☑ Require Server Name Indication       │
    └────────────────────────────────────────┘
@@ -69,10 +69,10 @@ PASO 4: CONFIGURAR SisTickets-Web
    │ Type:           [https ▼]              │
    │ IP address:     All Unassigned         │
    │ Port:           4200                   │
-   │ Host name:      tp.nexwork-peru.com   │
+   │ Host name:      tk.nexwork-peru.com   │
    │                                         │
    │ SSL certificate:                        │
-   │ [*.tp.nexwork-peru.com ▼]             │
+   │ [*.tk.nexwork-peru.com ▼]             │
    │                                         │
    │ ☑ Require Server Name Indication       │
    └────────────────────────────────────────┘
@@ -85,13 +85,13 @@ PASO 5: VERIFICAR
 
 Después de configurar ambos, deberías poder acceder:
 
-✓ API con HTTPS:      https://apitp.nexwork-peru.com:3000/api
-✓ Frontend con HTTPS: https://tp.nexwork-peru.com:4200/
+✓ API con HTTPS:      https://apitk.nexwork-peru.com:3000/api
+✓ Frontend con HTTPS: https://tk.nexwork-peru.com:4200/
 
 O con HTTP (también funciona):
 
-✓ API con HTTP:       http://apitp.nexwork-peru.com:3000/api
-✓ Frontend con HTTP:  http://tp.nexwork-peru.com:4200/
+✓ API con HTTP:       http://apitk.nexwork-peru.com:3000/api
+✓ Frontend con HTTP:  http://tk.nexwork-peru.com:4200/
 
 
 PROBLEMAS COMUNES
@@ -103,7 +103,7 @@ PROBLEMAS COMUNES
    → Verifica que IIS Manager no esté en "Content View"
 
 ❌ El certificado no aparece en la lista
-   → Usa el certificado: *.tp.nexwork-peru.com (wildcard)
+   → Usa el certificado: *.tk.nexwork-peru.com (wildcard)
    → Este certificado funciona para ambos dominios
 
 ❌ Error "Require Server Name Indication"

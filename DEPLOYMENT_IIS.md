@@ -12,14 +12,14 @@
 
 ## 🚀 Parte 1: Despliegue de la API (Node.js)
 
-### Dominio: https://apitp.nexwork-peru.com/
+### Dominio: https://apitk.nexwork-peru.com/
 ### Puerto: 3000
 
 ### Paso 1: Preparar la API
 
 1. **Compilar el proyecto TypeScript:**
    ```bash
-   cd C:\WS_Tickets_ver\Sis.Tickets-Api
+   cd C:\WS_Tickets_Control\Sis.Tickets-Api
    npm install
    npm run build
    ```
@@ -40,14 +40,14 @@
    DB_TRUST_CERT=true
    
    # CORS
-   CORS_ORIGIN=https://tp.nexwork-peru.com
+   CORS_ORIGIN=https://tk.nexwork-peru.com
    
    # JWT
    JWT_SECRET=your-secret-key-change-in-production
    JWT_EXPIRES_IN=24h
    
    # Frontend URL
-   FRONTEND_URL=https://tp.nexwork-peru.com
+   FRONTEND_URL=https://tk.nexwork-peru.com
    ```
 
 3. **Verificar que web.config existe** (ya está creado en la raíz del proyecto)
@@ -59,12 +59,12 @@
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
    - **Site name:** `SisTickets-API`
-   - **Physical path:** `C:\WS_Tickets_ver\Sis.Tickets-Api\dist`
+   - **Physical path:** `C:\WS_Tickets_Control\Sis.Tickets-Api\dist`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
      - Port: 3000
-     - Host name: `apitp.nexwork-peru.com`
+     - Host name: `apitk.nexwork-peru.com`
      - SSL certificate: Seleccionar el certificado correspondiente
 
 3. **Configurar Application Pool:**
@@ -91,21 +91,21 @@
 
 Abrir navegador y visitar:
 ```
-https://apitp.nexwork-peru.com/api
+https://apitk.nexwork-peru.com/api
 ```
 
 ---
 
 ## 🌐 Parte 2: Despliegue del Frontend (Angular)
 
-### Dominio: https://tp.nexwork-peru.com/
+### Dominio: https://tk.nexwork-peru.com/
 ### Puerto: 4200
 
 ### Paso 1: Preparar el Frontend
 
 1. **Compilar el proyecto Angular para producción:**
    ```bash
-   cd C:\WS_Tickets_ver\Sis.Tickets-Web
+   cd C:\WS_Tickets_Control\Sis.Tickets-Web
    npm install
    npm run build:prod
    ```
@@ -124,12 +124,12 @@ https://apitp.nexwork-peru.com/api
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
    - **Site name:** `SisTickets-Web`
-   - **Physical path:** `C:\WS_Tickets_ver\Sis.Tickets-Web\dist\sis-tickets-frontend`
+   - **Physical path:** `C:\WS_Tickets_Control\Sis.Tickets-Web\dist\sis-tickets-frontend`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
      - Port: 4200
-     - Host name: `tp.nexwork-peru.com`
+     - Host name: `tk.nexwork-peru.com`
      - SSL certificate: Seleccionar el certificado correspondiente
 
 3. **Configurar Application Pool:**
@@ -154,7 +154,7 @@ https://apitp.nexwork-peru.com/api
 
 Abrir navegador y visitar:
 ```
-https://tp.nexwork-peru.com/
+https://tk.nexwork-peru.com/
 ```
 
 ---
@@ -173,7 +173,7 @@ New-NetFirewallRule -DisplayName "Allow Port 4200" -Direction Inbound -LocalPort
 ### Logs de IIS
 
 **Para la API (Node.js):**
-- Logs de iisnode: `C:\WS_Tickets_ver\Sis.Tickets-Api\dist\iisnode\`
+- Logs de iisnode: `C:\WS_Tickets_Control\Sis.Tickets-Api\dist\iisnode\`
 - Logs de IIS: `C:\inetpub\logs\LogFiles\`
 
 **Para el Frontend:**
@@ -209,7 +209,7 @@ New-NetFirewallRule -DisplayName "Allow Port 4200" -Direction Inbound -LocalPort
 ### Para actualizar la API:
 
 ```bash
-cd C:\WS_Tickets_ver\Sis.Tickets-Api
+cd C:\WS_Tickets_Control\Sis.Tickets-Api
 git pull
 npm install
 npm run build
@@ -220,7 +220,7 @@ Luego en IIS Manager → Application Pools → Click derecho en `SisTickets-API-
 ### Para actualizar el Frontend:
 
 ```bash
-cd C:\WS_Tickets_ver\Sis.Tickets-Web
+cd C:\WS_Tickets_Control\Sis.Tickets-Web
 git pull
 npm install
 npm run build:prod
@@ -264,7 +264,7 @@ Si encuentras problemas durante el despliegue:
 - [ ] Permisos de carpeta establecidos
 - [ ] Certificado SSL configurado
 - [ ] Sitio iniciado
-- [ ] API responde en https://apitp.nexwork-peru.com/api
+- [ ] API responde en https://apitk.nexwork-peru.com/api
 
 ### Frontend:
 - [ ] Proyecto compilado (`npm run build:prod`)
@@ -275,7 +275,7 @@ Si encuentras problemas durante el despliegue:
 - [ ] Permisos de carpeta establecidos
 - [ ] Certificado SSL configurado
 - [ ] Sitio iniciado
-- [ ] Frontend responde en https://tp.nexwork-peru.com:4200/
+- [ ] Frontend responde en https://tk.nexwork-peru.com:4200/
 
 ---
 

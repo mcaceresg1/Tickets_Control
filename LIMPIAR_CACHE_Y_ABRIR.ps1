@@ -29,7 +29,7 @@ Start-Sleep -Seconds 2
 
 # Abrir en modo incógnito
 Write-Host "4. Abriendo frontend en modo incognito..." -ForegroundColor Yellow
-Start-Process msedge -ArgumentList "-inprivate","https://tp.nexwork-peru.com:4200/"
+Start-Process msedge -ArgumentList "-inprivate","https://tk.nexwork-peru.com:4200/"
 
 Write-Host ""
 Write-Host "======================================" -ForegroundColor Green
@@ -41,7 +41,7 @@ Write-Host ""
 Write-Host "IMPORTANTE:" -ForegroundColor Yellow
 Write-Host "1. Acepta el certificado SSL" -ForegroundColor White
 Write-Host "2. Abre la consola (F12)" -ForegroundColor White
-Write-Host "3. Verifica que AHORA use: https://apitp.nexwork-peru.com:3000" -ForegroundColor White
+Write-Host "3. Verifica que AHORA use: https://apitk.nexwork-peru.com:3000" -ForegroundColor White
 Write-Host ""
 pause
 
