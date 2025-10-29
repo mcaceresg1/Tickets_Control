@@ -17,7 +17,7 @@ if (-not $isAdmin) {
 }
 
 # Variables
-$projectPath = "C:\WS_Tickets_Control\Sis.Tickets-Api"
+$projectPath = "C:\WS_Tickets_Control\Tickets-Api"
 $siteName = "SisTickets-API"
 $appPoolName = "SisTickets-API-Pool"
 $port = 3000

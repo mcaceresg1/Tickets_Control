@@ -1,0 +1,118 @@
+================================================================
+  SOLUCIÓN AL PROBLEMA DE CONEXIÓN (28 Oct 2025)
+================================================================
+
+PROBLEMA ORIGINAL:
+------------------
+Error en frontend (DevTools Console):
+- POST https://apitk.nexwork-peru.com:3000/api/auth/login
+- net::ERR_CONNECTION_TIMED_OUT
+- Login error: status: 0, statusText: 'Unknown Error'
+
+CAUSA RAÍZ:
+-----------
+1. DNS INCORRECTO:
+   - apitk.nexwork-peru.com resolvía a: 34.174.25.136
+   - Servidor real está en: 161.132.56.68
+
+2. API NO ACCESIBLE DESDE RED:
+   - La API escuchaba solo en localhost (127.0.0.1)
+   - No era accesible desde otras máquinas o dominios
+
+SOLUCIÓN IMPLEMENTADA:
+----------------------
+
+1. API CONFIGURADA PARA ESCUCHAR EN TODAS LAS INTERFACES:
+   Archivo: Tickets-Api/src/index.ts
+   Cambio: .listen(port, '0.0.0.0', callback)
+   - Ahora la API es accesible desde cualquier interfaz de red
+
+2. FRONTEND USANDO IP DIRECTA (temporal):
+   Archivo: Tickets-Web/src/environments/environment.prod.ts
+   Cambio: apiUrl: 'http://161.132.56.68:3000/api'
+   - Permite conexión directa mientras se corrige DNS
+
+3. CORS ACTUALIZADO:
+   Archivo: Tickets-Api/src/shared/config/cors.config.ts
+   Agregado: 
+   - 'http://161.132.56.68:3000'
+   - 'https://161.132.56.68:3000'
+
+4. AMBOS PROYECTOS RECOMPILADOS:
+   - npm run build en API
+   - npm run build en Frontend
+   - API reiniciada
+   - IIS reiniciado
+
+VERIFICACIÓN:
+-------------
+✅ API accesible en: http://161.132.56.68:3000
+✅ Health check: http://161.132.56.68:3000/health
+✅ API info: http://161.132.56.68:3000/api
+✅ Login endpoint responde (con credenciales inválidas retorna 400/401)
+✅ CORS configurado correctamente
+
+ESTADO ACTUAL:
+--------------
+✅ API: http://161.132.56.68:3000 (funcionando)
+✅ Frontend: https://tk.nexwork-peru.com:4200 (funcionando)
+✅ Conexión entre Frontend y API: EXITOSA
+
+PRÓXIMOS PASOS RECOMENDADOS:
+-----------------------------
+
+OPCIÓN 1 (Permanente - Recomendada):
+1. Actualizar DNS de apitk.nexwork-peru.com:
+   - Cambiar de: 34.174.25.136
+   - A: 161.132.56.68
+
+2. Una vez actualizado el DNS, modificar:
+   Archivo: Tickets-Web/src/environments/environment.prod.ts
+   apiUrl: 'http://apitk.nexwork-peru.com:3000/api'
+
+3. Recompilar frontend: npm run build
+
+OPCIÓN 2 (Si no se puede cambiar DNS):
+- Dejar configuración actual con IP directa
+- Funciona correctamente pero menos "profesional"
+
+CONFIGURACIÓN DE FIREWALL:
+--------------------------
+Si surge problema de acceso desde otras redes:
+1. Verificar que puerto 3000 esté abierto en Firewall de Windows
+2. Verificar que puerto 4200 esté abierto (frontend)
+3. Comando para abrir puertos:
+   New-NetFirewallRule -DisplayName "API Tickets" -Direction Inbound -LocalPort 3000 -Protocol TCP -Action Allow
+   New-NetFirewallRule -DisplayName "Web Tickets" -Direction Inbound -LocalPort 4200 -Protocol TCP -Action Allow
+
+ARCHIVOS MODIFICADOS:
+---------------------
+✅ Tickets-Api/src/index.ts
+✅ Tickets-Api/src/shared/config/cors.config.ts
+✅ Tickets-Api/package.json (postbuild con certificado correcto)
+✅ Tickets-Web/src/environments/environment.prod.ts
+
+COMANDOS PARA INICIAR:
+----------------------
+API:
+  powershell -ExecutionPolicy Bypass -File C:\WS_Tickets_Control\Tickets-Api\start-api.ps1
+
+O usar batch:
+  1_ABRIR_API_PRIMERO.bat
+
+Frontend:
+  El frontend está en IIS, no requiere inicio manual
+  URL: https://tk.nexwork-peru.com:4200
+
+VERIFICACIÓN RÁPIDA:
+-------------------
+1. Abrir PowerShell
+2. Ejecutar: Invoke-WebRequest -Uri "http://161.132.56.68:3000/health"
+3. Debe retornar: Status 200 con {"status":"OK",...}
+
+================================================================
+FIN DEL DOCUMENTO
+================================================================
+
+
+

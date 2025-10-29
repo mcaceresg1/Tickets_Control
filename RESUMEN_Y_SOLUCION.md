@@ -45,7 +45,7 @@ npm install -g pm2-windows-service
 
 ### Configurar PM2:
 ```powershell
-cd C:\WS_Tickets_Control\Sis.Tickets-Api
+cd C:\WS_Tickets_Control\Tickets-Api
 pm2 start dist/index.js --name sis-tickets-api --env production
 pm2 save
 pm2-service-install -n PM2
@@ -65,8 +65,8 @@ pm2-service-install -n PM2
 
 ### 2. Instalar el servicio:
 ```powershell
-nssm install SisTicketsAPI "C:\Program Files\nodejs\node.exe" "C:\WS_Tickets_Control\Sis.Tickets-Api\dist\index.js"
-nssm set SisTicketsAPI AppDirectory C:\WS_Tickets_Control\Sis.Tickets-Api\dist
+nssm install SisTicketsAPI "C:\Program Files\nodejs\node.exe" "C:\WS_Tickets_Control\Tickets-Api\dist\index.js"
+nssm set SisTicketsAPI AppDirectory C:\WS_Tickets_Control\Tickets-Api\dist
 nssm set SisTicketsAPI AppEnvironmentExtra NODE_ENV=production
 nssm start SisTicketsAPI
 ```
@@ -76,7 +76,7 @@ nssm start SisTicketsAPI
 ## OPCIÓN 3: Ejecutar Node directamente (temporal para probar)
 
 ```powershell
-cd C:\WS_Tickets_Control\Sis.Tickets-Api\dist
+cd C:\WS_Tickets_Control\Tickets-Api\dist
 $env:NODE_ENV="production"
 $env:PORT="3000"
 node index.js

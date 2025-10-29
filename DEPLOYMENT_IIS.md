@@ -19,7 +19,7 @@
 
 1. **Compilar el proyecto TypeScript:**
    ```bash
-   cd C:\WS_Tickets_Control\Sis.Tickets-Api
+   cd C:\WS_Tickets_Control\Tickets-Api
    npm install
    npm run build
    ```
@@ -59,7 +59,7 @@
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
    - **Site name:** `SisTickets-API`
-   - **Physical path:** `C:\WS_Tickets_Control\Sis.Tickets-Api\dist`
+   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Api\dist`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
@@ -105,7 +105,7 @@ https://apitk.nexwork-peru.com/api
 
 1. **Compilar el proyecto Angular para producción:**
    ```bash
-   cd C:\WS_Tickets_Control\Sis.Tickets-Web
+   cd C:\WS_Tickets_Control\Tickets-Web
    npm install
    npm run build:prod
    ```
@@ -124,7 +124,7 @@ https://apitk.nexwork-peru.com/api
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
    - **Site name:** `SisTickets-Web`
-   - **Physical path:** `C:\WS_Tickets_Control\Sis.Tickets-Web\dist\sis-tickets-frontend`
+   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Web\dist\sis-tickets-frontend`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
@@ -173,7 +173,7 @@ New-NetFirewallRule -DisplayName "Allow Port 4200" -Direction Inbound -LocalPort
 ### Logs de IIS
 
 **Para la API (Node.js):**
-- Logs de iisnode: `C:\WS_Tickets_Control\Sis.Tickets-Api\dist\iisnode\`
+- Logs de iisnode: `C:\WS_Tickets_Control\Tickets-Api\dist\iisnode\`
 - Logs de IIS: `C:\inetpub\logs\LogFiles\`
 
 **Para el Frontend:**
@@ -209,7 +209,7 @@ New-NetFirewallRule -DisplayName "Allow Port 4200" -Direction Inbound -LocalPort
 ### Para actualizar la API:
 
 ```bash
-cd C:\WS_Tickets_Control\Sis.Tickets-Api
+cd C:\WS_Tickets_Control\Tickets-Api
 git pull
 npm install
 npm run build
@@ -220,7 +220,7 @@ Luego en IIS Manager → Application Pools → Click derecho en `SisTickets-API-
 ### Para actualizar el Frontend:
 
 ```bash
-cd C:\WS_Tickets_Control\Sis.Tickets-Web
+cd C:\WS_Tickets_Control\Tickets-Web
 git pull
 npm install
 npm run build:prod

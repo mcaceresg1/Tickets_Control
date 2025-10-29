@@ -1,0 +1,169 @@
+================================================================
+  SISTEMA DE TICKETS - CONFIGURACIÓN FINAL
+================================================================
+
+FECHA: 28 de Octubre de 2025
+SERVIDOR: WIN-SNA9N63HF99
+
+================================================================
+1. RESUMEN DE CAMBIOS REALIZADOS
+================================================================
+
+✅ Migración de dominios completada:
+   - tp.nexwork-peru.com → tk.nexwork-peru.com
+   - apitp.nexwork-peru.com → apitk.nexwork-peru.com
+
+✅ Configuración de IIS:
+   - Frontend funcionando en IIS (puerto 4200 HTTPS)
+   - API funcionando como proceso Node.js independiente (puerto 3000 HTTP)
+   - Regla global HTTP→HTTPS deshabilitada temporalmente
+
+✅ Archivos actualizados:
+   - cors.config.ts: Puertos corregidos (4200 para frontend)
+   - web.config (Frontend): CSP actualizado, redirect HTTPS corregido
+   - web.config (API): Configurado para iisnode (no se usa actualmente)
+   - Scripts de inicio actualizados
+
+================================================================
+2. ARQUITECTURA ACTUAL
+================================================================
+
+FRONTEND (Angular):
+  URL: https://tk.nexwork-peru.com:4200
+  Servidor: IIS
+  Estado: ✅ Funcionando
+  
+BACKEND (Node.js + Express):
+  URL: http://localhost:3000
+  Servidor: Node.js independiente (NO iisnode)
+  Estado: ✅ Funcionando
+  
+  Endpoints:
+    - Health: http://localhost:3000/health
+    - API: http://localhost:3000/api
+    - Swagger: http://localhost:3000/api-docs
+    - Login: http://localhost:3000/api/auth/login
+
+================================================================
+3. CÓMO INICIAR EL SISTEMA
+================================================================
+
+OPCIÓN 1: Script Automático
+---------------------------
+Ejecutar: 1_ABRIR_API_PRIMERO.bat
+- Detiene procesos Node.js previos
+- Inicia la API con el script start-api.ps1
+- Abre el navegador para verificar la API
+- MANTÉN LA VENTANA DE POWERSHELL ABIERTA (azul)
+
+Luego ejecutar: ABRIR_FRONTEND.bat
+- Abre el frontend en el navegador
+
+OPCIÓN 2: Manual
+---------------------------
+1. Abrir PowerShell como Administrador
+2. Navegar a: C:\WS_Tickets_Control\Tickets-Api
+3. Ejecutar: .\start-api.ps1
+4. Abrir navegador: https://tk.nexwork-peru.com:4200
+
+================================================================
+4. REINICIAR LA API
+================================================================
+
+Si necesitas reiniciar solo la API:
+  Ejecutar: REINICIAR_API.bat
+
+O manualmente:
+  1. Detener: Get-Process | Where-Object { $_.ProcessName -eq 'node' } | Stop-Process -Force
+  2. Iniciar: .\start-api.ps1
+
+================================================================
+5. PROBLEMAS RESUELTOS
+================================================================
+
+❌ PROBLEMA 1: iisnode error HRESULT 0x2, HTTP subStatus 1002
+✅ SOLUCIÓN: API ejecutándose como proceso Node.js independiente
+
+❌ PROBLEMA 2: Redirect 301 en todos los requests
+✅ SOLUCIÓN: Regla global HTTP→HTTPS deshabilitada
+
+❌ PROBLEMA 3: PhysicalPath vacío en IIS
+✅ SOLUCIÓN: Sitio recreado con path correcto
+
+❌ PROBLEMA 4: CSP bloqueando Bootstrap Icons
+✅ SOLUCIÓN: cdn.jsdelivr.net agregado a CSP
+
+❌ PROBLEMA 5: CORS con puertos incorrectos
+✅ SOLUCIÓN: cors.config.ts actualizado (puerto 4200)
+
+================================================================
+6. CONFIGURACIÓN DEL CERTIFICADO SSL
+================================================================
+
+Ubicación: C:\WS_Tickets_Control\Tickets-Web\cettificado_ssl\certificado.pfx
+Contraseña: temppassword123
+
+El certificado se configura en:
+  - start-api.ps1 (variables de entorno)
+  - IIS para el frontend (configurado)
+
+================================================================
+7. ARCHIVOS IMPORTANTES
+================================================================
+
+Scripts de inicio:
+  - C:\WS_Tickets_Control\Tickets-Api\start-api.ps1
+  - C:\WS_Tickets_Control\1_ABRIR_API_PRIMERO.bat
+  - C:\WS_Tickets_Control\REINICIAR_API.bat
+
+Configuración:
+  - Tickets-Api\src\shared\config\cors.config.ts
+  - Tickets-Web\web.config
+  - Tickets-Api\web.config (en proyecto raíz)
+
+Logs:
+  - Tickets-Api\dist\api-stdout.log
+  - Tickets-Api\dist\api-stderr.log
+
+================================================================
+8. PRÓXIMOS PASOS RECOMENDADOS
+================================================================
+
+1. ⚠️  Configurar servicio de Windows para iniciar API automáticamente
+   - Usar NSSM (Non-Sucking Service Manager) o similar
+   - Garantizar que la API inicie al arrancar el servidor
+
+2. 🔒 Configurar HTTPS para la API
+   - Verificar contraseña del certificado.pfx
+   - O generar nuevo certificado si es necesario
+
+3. 🌐 Habilitar regla HTTP→HTTPS global (si es necesario)
+   - Solo después de confirmar que HTTPS funciona
+
+4. 🔍 Monitoreo
+   - Implementar logs persistentes
+   - Configurar alertas de caída del servicio
+
+5. 🔐 Seguridad
+   - Cambiar contraseña del certificado en producción
+   - Revisar configuraciones de CORS para producción
+
+================================================================
+9. CONTACTOS Y SOPORTE
+================================================================
+
+Repositorios GitHub:
+  - Frontend: https://github.com/mcaceresg1/Tickets-Web.git
+  - Backend: https://github.com/mcaceresg1/Tickets-Api.git
+
+Documentación:
+  - Este archivo: CONFIGURACION_FINAL.txt
+  - Instrucciones SSL: INSTRUCCIONES_SSL_IIS.txt
+  - Iniciar todo: INICIAR_TODO.txt
+
+================================================================
+FIN DEL DOCUMENTO
+================================================================
+
+
+

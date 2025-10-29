@@ -51,7 +51,7 @@
 ## 🚀 **INSTRUCCIONES DE DESPLIEGUE**
 
 ### **PASO 1: Configurar Variables de Entorno**
-1. Copia `CONFIGURACION_PRODUCCION.env` a `Sis.Tickets-Api/.env`
+1. Copia `CONFIGURACION_PRODUCCION.env` a `Tickets-Api/.env`
 2. Ajusta las credenciales de base de datos si es necesario
 3. Cambia el `JWT_SECRET` por uno más seguro
 
@@ -113,22 +113,22 @@
 ### **Desarrollo Local**
 ```bash
 # API
-cd Sis.Tickets-Api
+cd Tickets-Api
 npm run dev
 
 # Frontend
-cd Sis.Tickets-Web
+cd Tickets-Web
 npm start
 ```
 
 ### **Producción**
 ```bash
 # Compilar API
-cd Sis.Tickets-Api
+cd Tickets-Api
 npm run build
 
 # Compilar Frontend
-cd Sis.Tickets-Web
+cd Tickets-Web
 npm run build:prod
 ```
 
