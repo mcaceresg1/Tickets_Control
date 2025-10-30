@@ -147,7 +147,7 @@ Write-Host ""
 Write-Host "NOTA IMPORTANTE:" -ForegroundColor Yellow
 Write-Host "- Para usar HTTPS, configure manualmente el certificado SSL en IIS" -ForegroundColor Yellow
 Write-Host "- Verifique que el módulo URL Rewrite esté instalado" -ForegroundColor Yellow
-Write-Host "- La API debe estar en: https://apitk.nexwork-peru.com/api" -ForegroundColor Yellow
+Write-Host "- La API debe estar en: https://tk.nexwork-peru.com:3000/api" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "Presione cualquier tecla para salir..." -ForegroundColor Gray
 $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

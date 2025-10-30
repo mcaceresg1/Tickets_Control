@@ -21,7 +21,7 @@ $apiSiteName = "SisTickets-API"
 $webSiteName = "SisTickets-Web"
 $apiPort = 3000
 $webPort = 4200
-$apiHostName = "apitk.nexwork-peru.com"
+$apiHostName = "tk.nexwork-peru.com"
 $webHostName = "tk.nexwork-peru.com"
 
 # Verificar módulos de IIS
@@ -56,7 +56,7 @@ Write-Host ""
 # Listar certificados disponibles
 Write-Host "[3/5] Certificados SSL disponibles:" -ForegroundColor Yellow
 
-$certificates = Get-ChildItem -Path "Cert:\LocalMachine\My" | Where-Object { $_.Subject -like "*nexwork-peru.com*" -or $_.Subject -like "*apitk.nexwork-peru.com*" -or $_.Subject -like "*tk.nexwork-peru.com*" }
+$certificates = Get-ChildItem -Path "Cert:\LocalMachine\My" | Where-Object { $_.Subject -like "*nexwork-peru.com*" -or $_.Subject -like "*tk.nexwork-peru.com*" }
 
 if ($certificates.Count -eq 0) {
     Write-Host "  ⚠ ADVERTENCIA: No se encontraron certificados para nexwork-peru.com" -ForegroundColor Yellow
@@ -82,7 +82,7 @@ Write-Host "[4/5] Configurando bindings HTTPS..." -ForegroundColor Yellow
 
 # API Site HTTPS Binding
 try {
-    $apiCert = $certificates | Where-Object { $_.Subject -like "*apitk.nexwork-peru.com*" -or $_.Subject -like "*nexwork-peru.com*" } | Select-Object -First 1
+    $apiCert = $certificates | Where-Object { $_.Subject -like "*tk.nexwork-peru.com*" -or $_.Subject -like "*nexwork-peru.com*" } | Select-Object -First 1
     
     if ($apiCert) {
         New-WebBinding -Name $apiSiteName -Protocol "https" -Port $apiPort -HostHeader $apiHostName -SslFlags 1

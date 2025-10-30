@@ -21,7 +21,7 @@ $projectPath = "C:\WS_Tickets_Control\Tickets-Api"
 $siteName = "SisTickets-API"
 $appPoolName = "SisTickets-API-Pool"
 $port = 3000
-$hostName = "apitk.nexwork-peru.com"
+$hostName = "tk.nexwork-peru.com"
 
 # Paso 1: Compilar el proyecto
 Write-Host "[1/6] Compilando proyecto TypeScript..." -ForegroundColor Yellow
