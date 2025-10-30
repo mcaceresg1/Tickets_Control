@@ -19,7 +19,7 @@
 
 1. **Compilar el proyecto TypeScript:**
    ```bash
-   cd C:\WS_Tickets_Control\Tickets-Api
+   cd C:\WS_Tickets_Control\Tickets-Backend
    npm install
    npm run build
    ```
@@ -58,8 +58,8 @@
 
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
-   - **Site name:** `SisTickets-API`
-   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Api\dist`
+   - **Site name:** `Tickets_Backend`
+   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Backend\dist`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
@@ -68,7 +68,7 @@
      - SSL certificate: Seleccionar el certificado correspondiente
 
 3. **Configurar Application Pool:**
-   - Nombre: `SisTickets-API-Pool`
+   - Nombre: `Tickets_Backend_Pool` (o mantener el existente)
    - .NET CLR version: No Managed Code
    - Managed pipeline mode: Integrated
    - Identity: ApplicationPoolIdentity (o cuenta específica con permisos)
@@ -105,7 +105,7 @@ https://apitk.nexwork-peru.com/api
 
 1. **Compilar el proyecto Angular para producción:**
    ```bash
-   cd C:\WS_Tickets_Control\Tickets-Web
+   cd C:\WS_Tickets_Control\Tickets-Frontend
    npm install
    npm run build:prod
    ```
@@ -123,8 +123,8 @@ https://apitk.nexwork-peru.com/api
 
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
-   - **Site name:** `SisTickets-Web`
-   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Web\dist\sis-tickets-frontend`
+   - **Site name:** `Tickets_Frontend`
+   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Frontend\dist\sis-tickets-frontend`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
@@ -133,7 +133,7 @@ https://apitk.nexwork-peru.com/api
      - SSL certificate: Seleccionar el certificado correspondiente
 
 3. **Configurar Application Pool:**
-   - Nombre: `SisTickets-Web-Pool`
+   - Nombre: `Tickets_Frontend_Pool` (o mantener el existente)
    - .NET CLR version: No Managed Code
    - Managed pipeline mode: Integrated
    - Identity: ApplicationPoolIdentity
@@ -173,7 +173,7 @@ New-NetFirewallRule -DisplayName "Allow Port 4200" -Direction Inbound -LocalPort
 ### Logs de IIS
 
 **Para la API (Node.js):**
-- Logs de iisnode: `C:\WS_Tickets_Control\Tickets-Api\dist\iisnode\`
+- Logs de iisnode: `C:\WS_Tickets_Control\Tickets-Backend\dist\iisnode\`
 - Logs de IIS: `C:\inetpub\logs\LogFiles\`
 
 **Para el Frontend:**
@@ -209,18 +209,18 @@ New-NetFirewallRule -DisplayName "Allow Port 4200" -Direction Inbound -LocalPort
 ### Para actualizar la API:
 
 ```bash
-cd C:\WS_Tickets_Control\Tickets-Api
+cd C:\WS_Tickets_Control\Tickets-Backend
 git pull
 npm install
 npm run build
 ```
 
-Luego en IIS Manager → Application Pools → Click derecho en `SisTickets-API-Pool` → Recycle
+Luego en IIS Manager → Application Pools → Click derecho en `Tickets_Backend_Pool` → Recycle
 
 ### Para actualizar el Frontend:
 
 ```bash
-cd C:\WS_Tickets_Control\Tickets-Web
+cd C:\WS_Tickets_Control\Tickets-Frontend
 git pull
 npm install
 npm run build:prod
