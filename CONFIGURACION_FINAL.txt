@@ -112,18 +112,18 @@ El certificado se configura en:
 ================================================================
 
 Scripts de inicio:
-  - C:\WS_Tickets_Control\Tickets-Api\start-api.ps1
+  - C:\WS_Tickets_Control\Tickets-Backend\start-api.ps1
   - C:\WS_Tickets_Control\1_ABRIR_API_PRIMERO.bat
   - C:\WS_Tickets_Control\REINICIAR_API.bat
 
 Configuración:
-  - Tickets-Api\src\shared\config\cors.config.ts
-  - Tickets-Web\web.config
-  - Tickets-Api\web.config (en proyecto raíz)
+  - Tickets-Backend\src\shared\config\cors.config.ts
+  - Tickets-Frontend\web.config
+  - Tickets-Backend\web.config (en proyecto raíz)
 
 Logs:
-  - Tickets-Api\dist\api-stdout.log
-  - Tickets-Api\dist\api-stderr.log
+  - Tickets-Backend\dist\api-stdout.log
+  - Tickets-Backend\dist\api-stderr.log
 
 ================================================================
 8. PRÓXIMOS PASOS RECOMENDADOS
