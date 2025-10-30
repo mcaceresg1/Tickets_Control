@@ -62,7 +62,7 @@ Luego ejecutar: ABRIR_FRONTEND.bat
 OPCIÓN 2: Manual
 ---------------------------
 1. Abrir PowerShell como Administrador
-2. Navegar a: C:\WS_Tickets_Control\Tickets-Api
+2. Navegar a: C:\WS_Tickets_Control\Tickets-Backend
 3. Ejecutar: .\start-api.ps1
 4. Abrir navegador: https://tk.nexwork-peru.com:4200
 
@@ -100,7 +100,7 @@ O manualmente:
 6. CONFIGURACIÓN DEL CERTIFICADO SSL
 ================================================================
 
-Ubicación: C:\WS_Tickets_Control\Tickets-Web\cettificado_ssl\certificado.pfx
+Ubicación: C:\WS_Tickets_Control\Tickets-Frontend\cettificado_ssl\certificado.pfx
 Contraseña: temppassword123
 
 El certificado se configura en:
@@ -153,8 +153,8 @@ Logs:
 ================================================================
 
 Repositorios GitHub:
-  - Frontend: https://github.com/mcaceresg1/Tickets-Web.git
-  - Backend: https://github.com/mcaceresg1/Tickets-Api.git
+  - Frontend: https://github.com/mcaceresg1/Sis.Tickets-Web.git
+  - Backend: https://github.com/mcaceresg1/Sis.Tickets-Api.git
 
 Documentación:
   - Este archivo: CONFIGURACION_FINAL.txt

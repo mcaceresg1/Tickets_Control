@@ -65,7 +65,7 @@ iisreset
 Abre **PowerShell** (como usuario normal, NO como administrador):
 
 ```powershell
-cd C:\WS_Tickets_Control\Tickets-Api
+cd C:\WS_Tickets_Control\Tickets-Backend
 npm install
 ```
 
@@ -91,7 +91,7 @@ dir dist
 
 ### 2.3 Crear archivo .env
 
-Crea el archivo `.env` en la raíz del proyecto `C:\WS_Tickets_Control\Tickets-Api\.env`
+Crea el archivo `.env` en la raíz del proyecto `C:\WS_Tickets_Control\Tickets-Backend\.env`
 
 Puedes usar el Bloc de notas:
 
@@ -181,7 +181,7 @@ dir web.config
    ```
    Site name: SisTickets-API
    Application pool: SisTickets-API-Pool
-   Physical path: C:\WS_Tickets_Control\Tickets-Api\dist
+   Physical path: C:\WS_Tickets_Control\Tickets-Backend\dist
    ```
 
 4. En la sección **Binding:**
@@ -204,7 +204,7 @@ dir web.config
 
 ```powershell
 # Navegar a la carpeta dist
-cd C:\WS_Tickets_Control\Tickets-Api\dist
+cd C:\WS_Tickets_Control\Tickets-Backend\dist
 
 # Otorgar permisos a IIS_IUSRS
 icacls . /grant "IIS_IUSRS:(OI)(CI)RX" /T
@@ -292,7 +292,7 @@ https://apitk.nexwork-peru.com:3000/api/auth/login
 Los logs de Node.js se guardan en:
 
 ```
-C:\WS_Tickets_Control\Tickets-Api\dist\iisnode\
+C:\WS_Tickets_Control\Tickets-Backend\dist\iisnode\
 ```
 
 Abre los archivos de log para ver errores.
@@ -352,7 +352,7 @@ C:\inetpub\logs\LogFiles\
 **Solución:**
 ```powershell
 # Como Administrador
-cd C:\WS_Tickets_Control\Tickets-Api\dist
+cd C:\WS_Tickets_Control\Tickets-Backend\dist
 icacls . /grant "IIS_IUSRS:(OI)(CI)F" /T
 icacls . /grant "IUSR:(OI)(CI)F" /T
 ```
@@ -395,7 +395,7 @@ Restart-WebItem -PSPath "IIS:\Sites\SisTickets-API"
 ### Ver logs en tiempo real
 ```powershell
 # PowerShell
-Get-Content C:\WS_Tickets_Control\Tickets-Api\dist\iisnode\*.log -Wait
+Get-Content C:\WS_Tickets_Control\Tickets-Backend\dist\iisnode\*.log -Wait
 ```
 
 ### Detener el sitio
@@ -412,7 +412,7 @@ Cuando hagas cambios en el código:
 
 ```powershell
 # 1. Compilar
-cd C:\WS_Tickets_Control\Tickets-Api
+cd C:\WS_Tickets_Control\Tickets-Backend
 npm run build
 
 # 2. Reiniciar en IIS

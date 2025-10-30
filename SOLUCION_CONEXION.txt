@@ -23,17 +23,17 @@ SOLUCIÓN IMPLEMENTADA:
 ----------------------
 
 1. API CONFIGURADA PARA ESCUCHAR EN TODAS LAS INTERFACES:
-   Archivo: Tickets-Api/src/index.ts
+   Archivo: Tickets-Backend/src/index.ts
    Cambio: .listen(port, '0.0.0.0', callback)
    - Ahora la API es accesible desde cualquier interfaz de red
 
 2. FRONTEND USANDO IP DIRECTA (temporal):
-   Archivo: Tickets-Web/src/environments/environment.prod.ts
+   Archivo: Tickets-Frontend/src/environments/environment.prod.ts
    Cambio: apiUrl: 'http://161.132.56.68:3000/api'
    - Permite conexión directa mientras se corrige DNS
 
 3. CORS ACTUALIZADO:
-   Archivo: Tickets-Api/src/shared/config/cors.config.ts
+   Archivo: Tickets-Backend/src/shared/config/cors.config.ts
    Agregado: 
    - 'http://161.132.56.68:3000'
    - 'https://161.132.56.68:3000'
@@ -67,7 +67,7 @@ OPCIÓN 1 (Permanente - Recomendada):
    - A: 161.132.56.68
 
 2. Una vez actualizado el DNS, modificar:
-   Archivo: Tickets-Web/src/environments/environment.prod.ts
+   Archivo: Tickets-Frontend/src/environments/environment.prod.ts
    apiUrl: 'http://apitk.nexwork-peru.com:3000/api'
 
 3. Recompilar frontend: npm run build
@@ -87,15 +87,15 @@ Si surge problema de acceso desde otras redes:
 
 ARCHIVOS MODIFICADOS:
 ---------------------
-✅ Tickets-Api/src/index.ts
-✅ Tickets-Api/src/shared/config/cors.config.ts
-✅ Tickets-Api/package.json (postbuild con certificado correcto)
-✅ Tickets-Web/src/environments/environment.prod.ts
+✅ Tickets-Backend/src/index.ts
+✅ Tickets-Backend/src/shared/config/cors.config.ts
+✅ Tickets-Backend/package.json (postbuild con certificado correcto)
+✅ Tickets-Frontend/src/environments/environment.prod.ts
 
 COMANDOS PARA INICIAR:
 ----------------------
 API:
-  powershell -ExecutionPolicy Bypass -File C:\WS_Tickets_Control\Tickets-Api\start-api.ps1
+  powershell -ExecutionPolicy Bypass -File C:\WS_Tickets_Control\Tickets-Backend\start-api.ps1
 
 O usar batch:
   1_ABRIR_API_PRIMERO.bat
