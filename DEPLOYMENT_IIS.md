@@ -124,11 +124,11 @@ https://apitk.nexwork-peru.com/api
 2. **Crear un nuevo sitio web:**
    - Click derecho en "Sites" → "Add Website"
    - **Site name:** `Tickets_Frontend`
-   - **Physical path:** `C:\WS_Tickets_Control\Tickets-Frontend\dist\sis-tickets-frontend`
+   - **Physical path:** `C:\inetpub\wwwroot\Tickets_Control\web`
    - **Binding:**
      - Type: https
      - IP address: All Unassigned
-     - Port: 4200
+     - Port: 443 (o el puerto configurado)
      - Host name: `tk.nexwork-peru.com`
      - SSL certificate: Seleccionar el certificado correspondiente
 
@@ -227,7 +227,12 @@ npm run build:prod
 copy web.config dist\sis-tickets-frontend\
 ```
 
-Luego en IIS Manager → Application Pools → Click derecho en `SisTickets-Web-Pool` → Recycle
+**IMPORTANTE:** Copiar archivos compilados a la carpeta de IIS:
+```powershell
+Copy-Item -Path "dist\sis-tickets-frontend\browser\*" -Destination "C:\inetpub\wwwroot\Tickets_Control\web\" -Recurse -Force
+```
+
+Luego en IIS Manager → Application Pools → Click derecho en `Tickets_Frontend_Pool` → Recycle
 
 ---
 
